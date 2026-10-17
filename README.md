@@ -5,9 +5,9 @@
 C++과 Win32 API로 만든 작은 개인 프로젝트입니다. 투명한 PNG 이미지 3장을 키 입력에 맞춰 교체하며, 트레이 메뉴에서 크기와 동작을 조절할 수 있습니다.
 
 <p align="center">
-  <img src="images/idle.png" width="200" alt="양손을 든 기본 자세">
-  <img src="images/left.png" width="200" alt="화면 왼쪽 앞발로 키보드 누르기">
-  <img src="images/right.png" width="200" alt="화면 오른쪽 앞발로 키보드 누르기">
+  <img src="Typing-hamster/images/idle.png" width="200" alt="양손을 든 기본 자세">
+  <img src="Typing-hamster/images/left.png" width="200" alt="화면 왼쪽 앞발로 키보드 누르기">
+  <img src="Typing-hamster/images/right.png" width="200" alt="화면 오른쪽 앞발로 키보드 누르기">
 </p>
 
 <p align="center">기본 자세 · 화면 왼쪽 앞발 · 화면 오른쪽 앞발</p>
