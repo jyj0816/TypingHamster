@@ -1,0 +1,30 @@
+# Build outputs
+*.exe
+*.dll
+*.o
+*.obj
+*.a
+*.lib
+*.pdb
+*.ilk
+*.idb
+/build/
+/dist/
+
+# Local editor / IDE files
+/.vscode/
+/.vs/
+*.user
+*.suo
+
+# Temporary files and local settings copies
+*.tmp
+*.log
+/settings.ini
+/settings.ini.tmp
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
