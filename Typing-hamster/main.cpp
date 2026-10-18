@@ -199,23 +199,20 @@ void SaveSettings(HWND hwnd)
     add(L"ClickThrough", settings.clickThrough);
     section.push_back(L'\0');
 
-    std::wstring temporary = configPath + L".tmp";
+    // The profile API replaces the complete section atomically. Its separate
+    // cache-flush operation can return zero on success, so it must not be used
+    // as the success/failure result for saving settings.
+    SetLastError(ERROR_SUCCESS);
     bool written = WritePrivateProfileSectionW(
-        L"Pet", section.c_str(), temporary.c_str()) != FALSE;
-    if (written)
-        written = WritePrivateProfileStringW(
-            nullptr, nullptr, nullptr, temporary.c_str()) != FALSE;
-    if (written)
-        written = MoveFileExW(
-            temporary.c_str(), configPath.c_str(),
-            MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH) != FALSE;
+        L"Pet", section.c_str(), configPath.c_str()) != FALSE;
     if (!written)
     {
-        DeleteFileW(temporary.c_str());
+        DWORD error = GetLastError();
         if (!saveErrorShown)
         {
             saveErrorShown = true;
-            Error(hwnd, L"설정을 저장하지 못했습니다.\n" + configPath);
+            Error(hwnd, L"설정을 저장하지 못했습니다.\n" + configPath +
+                  L"\nWindows 오류 코드: " + std::to_wstring(error));
         }
     }
     else saveErrorShown = false;
@@ -848,4 +845,3 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE, PWSTR, int)
     CloseHandle(mutex);
     return result;
 }
-
